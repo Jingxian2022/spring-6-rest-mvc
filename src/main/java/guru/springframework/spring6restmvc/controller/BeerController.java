@@ -10,14 +10,13 @@ import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 @Slf4j
 @AllArgsConstructor
-@Controller
+@RestController
+@RequestMapping("/api/v1/beer")
 public class BeerController {
     private final BeerService beerService;
 
@@ -57,7 +56,8 @@ public class BeerController {
         return new ResponseEntity(headers, HttpStatus.CREATED);
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    // @RequestMapping(method = RequestMethod.GET)
+    @GetMapping()
     public List<Beer> listBeers() {
         return beerService.listBeers();
     }
